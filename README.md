@@ -4,7 +4,7 @@ Writing my own i3 config is just like playing another Minecraft! (´・ω・`)
 
 ### screenshot
 
-![screenshot](https://github.com/GarrusTali/my-manjaro-i3/screenshot.png)
+![screenshot](https://github.com/GarrusTali/my-manjaro-i3/blob/master/screenshot.png)
 
 ### -- core --
 * shell: bash with bash-completion
@@ -37,5 +37,6 @@ for more, turn to startup application
 * note: leanote
 
 ### Idea about the keybinding
-Switch the Win key and the CapsLock. Now pressing the $mod key is easy: just move your left pinky.
-Frequently used operations(navigations, favorite apps) have been binding so that they are easily catched by the right hand without leaving the homerow.
+* Switch the Win key and the CapsLock. Now pressing the $mod key is easy: just move your left pinky.
+
+* Frequently used operations(navigations, favorite apps) have been binding so that they are easily catched by the right hand without leaving the homerow.
