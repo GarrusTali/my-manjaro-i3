@@ -13,7 +13,7 @@ Writing my own i3 config is just like playing another Minecraft! (´・ω・`)
 * monitor: conky
 * transparent: compton
 * for-eye: redshift
-* wallpaper: nitrogen
+* wallpaper: feh
 * input method: fcitx with fcitx-sogoupinyin(aur)
 * proxy: proxychains & shadowsocks
 

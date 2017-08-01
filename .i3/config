@@ -10,7 +10,7 @@
 # monitor: conky
 # transparent: compton
 # for-eye: redshift
-# wallpaper: nitrogen
+# wallpaper: feh
 # input method: fcitx with fcitx-sogoupinyin(aur)
 # proxy: proxychains & shadowsocks
 # others which manjaro-i3 included: 
@@ -248,7 +248,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # desktop
-exec --no-startup-id nitrogen --set-auto ~/Pictures/beginning.png; sleep 1
+exec --no-startup-id feh --bg-scale ~/Pictures/beginning.png
 exec --no-startup-id conky -c ~/.config/conky/conky.conf
 exec --no-startup-id compton --config ~/.config/compton/config --xrender-sync --xrender-sync-fence -b
 
@@ -433,8 +433,8 @@ bindsym $mod+semicolon exec urxvt -e ranger
 bindsym $mod+apostrophe exec pcmanfm
 
 ### shift
-bindsym $mod+Shift+i --release exec "pkill pulseaudio; pulseaudio --start"
-bindsym $mod+Shift+p exec gksu pcmanfm
+bindsym $mod+Shift+i --release exec --no-startup-id "pkill pulseaudio; pulseaudio --start"
+bindsym $mod+Shift+apostrophe exec gksu pcmanfm
 
 ### ctrl
 bindsym $mod+Ctrl+i exec pavucontrol
