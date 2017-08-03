@@ -22,7 +22,7 @@ i3-scrot, lxappearance, xfce4-power-manager, pamac-tray, blurlock, pulseaudio&pa
 for more, turn to startup application
 
 ### -- CLI apps --
-* file manager: ranger
+* file manager: ranger(w3m for preview image, atool for preview archives)
 * editor: gvim
 * media: mpv
 
