@@ -16,6 +16,8 @@
 # others which manjaro-i3 included: 
 # i3-scrot,lxappearance,xfce4-power-manager,pamac-tray,blurlock,pulseaudio&pavucontrol
 # for more, turn to startup application
+# trivials which needs to install:
+# unrar,zip,unzip
 
 # -- app --             (cli       &       gui)
 # file manager:        ranger            pcmanfm
@@ -197,7 +199,7 @@ set $ws4 4:Ide
 set $ws5 5:File
 set $ws6 6:Read
 set $ws7 7:Media
-set $ws8 8:Util
+set $ws8 8:Chat
 
 
 # ~~~~~ bar ~~~~~
@@ -223,7 +225,7 @@ bar {
         separator  $i3_separator
 
 #                           border      backgr.     text
-        focused_workspace   $i3_color1  $i3_color4  $i3_text
+        focused_workspace   $i3_color1  #32CCAE     $i3_text
         active_workspace    $i3_color2  $i3_color3  $i3_color5
         inactive_workspace  $i3_color2  $i3_color3  $i3_color6
         urgent_workspace    $i3_color4  $i3_color5  $i3_color7
@@ -403,7 +405,7 @@ mode "$mode_beautify" {
 bindsym $mod+Shift+r restart
 
 
-# ~~~~~ app area (level 1) ~~~~~  [$mod+y is left for app mode, $mod+semicolon is left for the most favor&freq app]
+# ~~~~~ app area (level 1) ~~~~~  [$mod+y is left for app mode]
 
 # collection of ide (my)
 bindsym $mod+u mode "$mode_ide"
@@ -429,11 +431,13 @@ mode "$mode_work" {
 	bindsym Escape mode "default"
 }
 
+bindsym $mod+backslash exec pamac-manager
 bindsym $mod+semicolon exec urxvt -e ranger
 bindsym $mod+apostrophe exec pcmanfm
 
 ### shift
 bindsym $mod+Shift+i --release exec --no-startup-id "pkill pulseaudio; pulseaudio --start"
+bindsym $mod+Shift+backslash exec pamac-updater
 bindsym $mod+Shift+apostrophe exec gksu pcmanfm
 
 ### ctrl
