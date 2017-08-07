@@ -3,33 +3,6 @@
 
 # ~~~~~ GarrusTali's i3Craft ~~~~~
 
-# -- core --
-# shell: bash --> bash-completion
-# terminal: rxvt-unicode-patched(aur)
-# bar: i3blocks --> playctl(music),sysstat,ttf-font-awesome
-# monitor: conky
-# transparent: compton
-# for-eye: redshift
-# wallpaper: feh
-# input method: fcitx with fcitx-sogoupinyin(aur)
-# proxy: proxychains & shadowsocks
-# others which manjaro-i3 included: 
-# i3-scrot,lxappearance,xfce4-power-manager,pamac-tray,blurlock,pulseaudio&pavucontrol
-# for more, turn to startup application
-# trivials which needs to install:
-# unrar,zip,unzip
-
-# -- app --             (cli       &       gui)
-# file manager:        ranger            pcmanfm
-# editor:              gvim              spacemacs
-# browser:                               palemoon
-# media:               mpv               smplayer
-# pdfreader:           zathura 
-# ide(gui only): pycharm & clion & idea
-# office(gui only): libreoffice
-# notes(gui only): leanote
-# chats(gui only): deepin-wechat(aur) & 
-
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
@@ -82,35 +55,24 @@ smart_borders on
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
+for_window [title="About Pale Moon"] floating enable
 for_window [class="Bleachbit"] floating enable
-for_window [class="Calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="GParted"] floating enable
+for_window [title="i3_help"] floating enable
 for_window [title="Leanote login"] floating enable
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Lxappearance"] floating enable
 for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable
+for_window [class="Nitrogen"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pamac-updater"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Thus"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="qt5ct"] floating enable sticky enable
+for_window [class="Qtconfig-qt4"] floating enable sticky enable
+for_window [class="Thus"] floating enable
+for_window [class="Timeset-gui"] floating enable
+for_window [class="(?i)virtualbox"] floating enable
 for_window [class="Xarchiver"] floating enable
 for_window [class="Xfburn"] floating enable
 
@@ -433,12 +395,12 @@ mode "$mode_work" {
 
 bindsym $mod+backslash exec pamac-manager
 bindsym $mod+semicolon exec urxvt -e ranger
-bindsym $mod+apostrophe exec pcmanfm
+bindsym $mod+apostrophe exec thunar
 
 ### shift
 bindsym $mod+Shift+i --release exec --no-startup-id "pkill pulseaudio; pulseaudio --start"
 bindsym $mod+Shift+backslash exec pamac-updater
-bindsym $mod+Shift+apostrophe exec gksu pcmanfm
+bindsym $mod+Shift+apostrophe exec gksu thunar
 
 ### ctrl
 bindsym $mod+Ctrl+i exec pavucontrol

@@ -41,7 +41,7 @@ if ${use_color} ; then
 	if [[ ${EUID} == 0 ]] ; then
 		PS1="\n\[\e[1;31m\]┌─\h  \[\e[1;36m\]\t \w\n\[\e[1;31m\]└╼（╯‵□′）╯︵┴─┴\[\e[0m\] \$ "
 	else
-		PS1="\n\[\e[1;32m\]┌─\u@\h  \[\e[1;36m\]\t \w\n\[\e[1;32m\]└╼（╯‵□′）╯︵┴─┴\[\e[0m\] \$ "
+		PS1="\n\[\e[1;32m\]┌─\u@\h  \[\e[1;36m\]\t  \w\n\[\e[1;32m\]└╼（╯‵□′）╯︵┴─┴\[\e[0m\] \$ "
 	fi
 
 	alias ls='ls --color=auto'
@@ -119,4 +119,7 @@ alias more=less
 alias np='nano -w PKGBUILD'
 
 # alias part(my)
-alias cfg='vim $HOME/.i3/config'
+alias vim=nvim
+alias cfgbash='vim ~/.extend.bashrc'
+alias cfgi3='vim ~/.i3/config'
+alias cfgnvim='vim ~/.config/nvim/init.vim'

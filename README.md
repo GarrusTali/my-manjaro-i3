@@ -23,13 +23,13 @@ for more, turn to startup application
 
 ### -- CLI apps --
 * file manager: ranger(w3m for preview image, atool for preview archives)
-* editor: gvim
+* editor: neovim
 * media: mpv
 
 ### -- GUI apps --
-* file manager: pcmanfm
+* file manager: thunar
 * editor: spacemacs
-* browser: palemoon
+* browser: firefox
 * media: smplayer
 * pdfreader: zathura
 * ide: pycharm & clion
