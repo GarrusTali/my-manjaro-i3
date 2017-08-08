@@ -119,7 +119,6 @@ alias more=less
 alias np='nano -w PKGBUILD'
 
 # alias part(my)
-alias vim=nvim
-alias cfgbash='vim ~/.extend.bashrc'
-alias cfgi3='vim ~/.i3/config'
-alias cfgnvim='vim ~/.config/nvim/init.vim'
+alias cfgbash='nvim ~/.extend.bashrc'
+alias cfgi3='nvim ~/.i3/config'
+alias cfgnvim='nvim ~/.config/nvim/init.vim'

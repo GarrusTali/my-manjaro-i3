@@ -76,7 +76,7 @@ for_window [class="(?i)virtualbox"] floating enable
 for_window [class="Xarchiver"] floating enable
 for_window [class="Xfburn"] floating enable
 
-for_window [class="^URxvt$" instance="scratch"] move scratchpad
+for_window [class="^Xfce4-terminal$" title="scratch"] move scratchpad
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -220,7 +220,7 @@ exec --no-startup-id compton --config ~/.config/compton/config --xrender-sync --
 exec --no-startup-id fcitx
 exec --no-startup-id sogou-qimpanel
 exec --no-startup-id sslocal -c ~/.config/shadowsocks/config.json
-exec --no-startup-id urxvt -name scratch
+exec --no-startup-id xfce4-terminal --title scratch
 
 
 ##### KEYS CONFIG (smaller means more frequently used) #####
@@ -384,17 +384,18 @@ bindsym $mod+i workspace $ws7; exec --no-startup-id ~/.i3/oneonly smplayer
 bindsym $mod+o workspace $ws3; exec --no-startup-id ~/.i3/oneonly palemoon
 
 bindsym $mod+p mode "$mode_work"
-set $mode_work (j)emacs, (k)leanote
+set $mode_work (j)nvim, (k)emacs, (l)leanote
 mode "$mode_work" {
-	bindsym j workspace $ws2; mode "default"; exec --no-startup-id ~/.i3/oneonly emacs
-	bindsym k workspace $ws6; mode "default"; exec --no-startup-id ~/.i3/oneonly ~/appsneak/leanote/Leanote
+	bindsym j workspace $ws2; mode "default"; exec --no-startup-id ~/.i3/oneonly nvim
+	bindsym k workspace $ws2; mode "default"; exec --no-startup-id ~/.i3/oneonly emacs
+	bindsym l workspace $ws6; mode "default"; exec --no-startup-id ~/.i3/oneonly ~/appsneak/leanote/Leanote
 	
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
 
 bindsym $mod+backslash exec pamac-manager
-bindsym $mod+semicolon exec urxvt -e ranger
+bindsym $mod+semicolon exec xfce4-terminal -e ranger
 bindsym $mod+apostrophe exec thunar
 
 ### shift
@@ -447,7 +448,7 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec xfce4-terminal
 
 # split orientation
 bindsym $mod+b split toggle

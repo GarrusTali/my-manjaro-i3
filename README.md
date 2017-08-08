@@ -8,7 +8,7 @@ Writing my own i3 config is just like playing another Minecraft! (´・ω・`)
 
 ### -- core --
 * shell: bash with bash-completion
-* terminal: rxvt-unicode-patched(aur)
+* terminal: xfce4-terminal
 * bar: i3blocks (playctl, sysstat, ttf-font-awesome is needed)
 * monitor: conky
 * transparent: compton
@@ -29,7 +29,7 @@ for more, turn to startup application
 ### -- GUI apps --
 * file manager: thunar
 * editor: spacemacs
-* browser: firefox
+* browser: palemoon
 * media: smplayer
 * pdfreader: zathura
 * ide: pycharm & clion
