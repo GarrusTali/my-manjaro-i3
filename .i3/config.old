@@ -11,7 +11,7 @@
 # monitor: conky
 # transparent: compton
 # for-eye: redshift
-# wallpaper: feh
+# wallpaper: nitrogen
 # input method: fcitx
 # others which manjaro-i3 included: i3-scrot,lxappearance,xfce4-power-manager,pamac-tray,blurlock,pulseaudio&pavucontrol
 # -- app --:            (cli       &       gui)
@@ -75,7 +75,7 @@ bindsym $mod+Ctrl+i exec pavucontrol
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # >> auto-startup application (my)
-exec --no-startup-id feh --bg-scale ~/Pictures/beginning.png
+exec --no-startup-id nitrogen --set-auto ~/Pictures/beginning.png; sleep 1;
 exec --no-startup-id conky -c ~/.config/conky/conky.conf
 exec --no-startup-id compton --config ~/.config/compton/config --xrender-sync --xrender-sync-fence -b
 exec --no-startup-id fcitx

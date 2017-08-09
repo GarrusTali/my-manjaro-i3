@@ -367,64 +367,55 @@ mode "$mode_beautify" {
 bindsym $mod+Shift+r restart
 
 
-# ~~~~~ app area (level 1) ~~~~~  [$mod+y is left for app mode]
+# ~~~~~ app area (level 1) ~~~~~  [$mod+uiop is left for some common but annoying tasks]
 
-# collection of ide (my)
-bindsym $mod+u mode "$mode_ide"
-set $mode_ide (j)pycharm, (k)clion
-mode "$mode_ide" {
-	bindsym j workspace $ws4; mode "default"; exec --no-startup-id ~/.i3/oneonly charm
-	bindsym k workspace $ws4; mode "default"; exec --no-startup-id ~/.i3/oneonly clion
-	
+# quick launcher of most frequently used ordinary things
+bindsym $mod+semicolon mode "$mode_nos"
+set $mode_nos (j)ranger, (k)smplayer, (l)palemoon, (u)thunar
+mode "$mode_nos" {
+	bindsym j mode "default"; exec xfce4-terminal -e ranger
+	bindsym k workspace $ws7; mode "default"; exec --no-startup-id ~/.i3/script/oneonly smplayer
+	bindsym l workspace $ws3; mode "default"; exec --no-startup-id ~/.i3/script/oneonly palemoon
+	bindsym u mode "default"; exec thunar
+
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+i workspace $ws7; exec --no-startup-id ~/.i3/oneonly smplayer
-bindsym $mod+o workspace $ws3; exec --no-startup-id ~/.i3/oneonly palemoon
-
-bindsym $mod+p mode "$mode_work"
-set $mode_work (j)nvim, (k)emacs, (l)leanote
+# quick launcher of most frequently used work-app
+bindsym $mod+apostrophe mode "$mode_work"
+set $mode_work (j)nvim, (k)emacs, (l)leanote, (u)pycharm, (i)clion
 mode "$mode_work" {
-	bindsym j workspace $ws2; mode "default"; exec --no-startup-id ~/.i3/oneonly nvim
-	bindsym k workspace $ws2; mode "default"; exec --no-startup-id ~/.i3/oneonly emacs
-	bindsym l workspace $ws6; mode "default"; exec --no-startup-id ~/.i3/oneonly ~/appsneak/leanote/Leanote
+	bindsym j workspace $ws2; mode "default"; exec xfce4-terminal -e nvim
+	bindsym k workspace $ws2; mode "default"; exec --no-startup-id ~/.i3/script/oneonly emacs
+	bindsym l workspace $ws6; mode "default"; exec --no-startup-id ~/.i3/script/oneonly ~/appsneak/leanote/Leanote
 	
+	bindsym u workspace $ws4; mode "default"; exec --no-startup-id ~/.i3/script/oneonly charm
+	bindsym i workspace $ws4; mode "default"; exec --no-startup-id ~/.i3/script/oneonly clion
+
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-
-bindsym $mod+backslash exec pamac-manager
-bindsym $mod+semicolon exec xfce4-terminal -e ranger
-bindsym $mod+apostrophe exec thunar
 
 ### shift
 bindsym $mod+Shift+i --release exec --no-startup-id "pkill pulseaudio; pulseaudio --start"
 bindsym $mod+Shift+backslash exec pamac-updater
-bindsym $mod+Shift+apostrophe exec gksu thunar
 
 ### ctrl
 bindsym $mod+Ctrl+i exec pavucontrol
 
 
-# ~~~~~ common operation area (level 3) ~~~~~ [$mod+a/x/c is empty]
+# ~~~~~ common operation area (level 3) ~~~~~ [$mod+qwsdzxcv is empty]
 
-# toggle sticky
-bindsym $mod+s sticky toggle
-
-# start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+# focus parent
+bindsym $mod+a focus parent
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
-# hide/unhide i3status bar
-bindsym $mod+v bar mode toggle
-
 ### shift
+bindsym $mod+Shift+a focus child
+
 bindsym $mod+Shift+d --release exec --no-startup-id "killall dunst; exec notify-send 'restart dunst'"
 
 # reload the configuration file
@@ -451,13 +442,14 @@ bindsym $mod+l focus right
 bindsym $mod+Return exec xfce4-terminal
 
 # split orientation
+bindsym $mod+v split h;exec notify-send 'tile horizontally'
 bindsym $mod+b split toggle
-bindsym $mod+n split h;exec notify-send 'tile horizontally'
-bindsym $mod+m split v;exec notify-send 'tile vertically'
+bindsym $mod+n split v;exec notify-send 'tile vertically'
 
-# focus the parent/child container
-bindsym $mod+comma focus parent
-bindsym $mod+period focus child
+# music control~
+bindsym $mod+m exec playerctl play-pause
+bindsym $mod+comma exec playerctl previous
+bindsym $mod+period exec playerctl next
 
 # kill focused window
 bindsym $mod+slash kill
