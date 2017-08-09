@@ -1,3 +1,0 @@
-#if (($(ps -ef| grep $1| wc -l) == 1));then exec $1;fi
-
-ps -ef| grep -v "grep\|oneonly $1" | grep $1 > /dev/null || nohup $1 > /dev/null 2>&1
