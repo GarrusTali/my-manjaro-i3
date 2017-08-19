@@ -369,6 +369,8 @@ bindsym $mod+Shift+r restart
 
 # ~~~~~ app area (level 1) ~~~~~  [$mod+uiop is left for some common but annoying tasks]
 
+bindsym $mod+backslash exec pamac-manager
+
 # quick launcher of most frequently used ordinary things
 bindsym $mod+semicolon mode "$mode_nos"
 set $mode_nos (j)ranger, (k)smplayer, (l)palemoon, (u)thunar
@@ -399,7 +401,6 @@ mode "$mode_work" {
 
 ### shift
 bindsym $mod+Shift+i --release exec --no-startup-id "pkill pulseaudio; pulseaudio --start"
-bindsym $mod+Shift+backslash exec pamac-updater
 
 ### ctrl
 bindsym $mod+Ctrl+i exec pavucontrol
@@ -442,9 +443,9 @@ bindsym $mod+l focus right
 bindsym $mod+Return exec xfce4-terminal
 
 # split orientation
-bindsym $mod+v split h;exec notify-send 'tile horizontally'
+bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+b split toggle
-bindsym $mod+n split v;exec notify-send 'tile vertically'
+bindsym $mod+n split h;exec notify-send 'tile horizontally'
 
 # music control~
 bindsym $mod+m exec playerctl play-pause
@@ -480,6 +481,7 @@ bindsym $mod+Shift+space focus mode_toggle
 # just move container to next / previous workspace
 bindsym $mod+Ctrl+bracketleft move container to workspace prev
 bindsym $mod+Ctrl+bracketright move container to workspace next
+
 
 # ~~~~~ arrow area (level 4) ~~~~~
 

@@ -25,6 +25,7 @@ for more, turn to startup application
 * file manager: ranger(w3m for preview image, atool for preview archives)
 * editor: neovim
 * media: mpv
+* common: the_silver_searcher
 
 ### -- GUI apps --
 * file manager: thunar
