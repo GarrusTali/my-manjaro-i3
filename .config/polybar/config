@@ -1,0 +1,402 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #353836
+background-alt = #121212
+;foreground = ${xrdb:color7:#222}
+foreground = #f9faf9
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+
+[bar/top]
+width = 100%
+height = 27
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 3
+
+font-0 = Noto Sans:pixelsize=11.5;1
+font-1 = Microsoft YaHei:pixelsize=11.5;1
+font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-3 = FontAwesome:pixelsize=13;2
+
+tray-position = 
+tray-padding = 0
+
+modules-left = i3
+modules-center = 
+modules-right = temperature mybattery date powermenu
+
+[bar/bottom]
+bottom = true
+
+width = 100%
+height = 27
+
+background = ${colors.background-alt}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 4
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 3
+
+font-0 = Noto Sans:pixelsize=11.5;1
+font-1 = Microsoft YaHei:pixelsize=11.5;1
+font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-3 = FontAwesome:pixelsize=13;2
+
+tray-position = left
+tray-padding = 2
+
+modules-left = wifi
+modules-center = 
+modules-right = volume cpu memory
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = true
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused = %name%
+label-focused-foreground = ${colors.primary}
+label-focused-background = ${colors.background}
+label-focused-underline = ${colors.primary}
+label-focused-padding = ${self.label-mode-padding}
+
+label-unfocused = %name%
+label-unfocused-padding = ${self.label-mode-padding}
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = ${self.label-mode-padding}
+
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+ws-icon-0 = 1;Term
+ws-icon-1 = 2;Edit
+ws-icon-2 = 3;Moon
+ws-icon-3 = 4;Code
+ws-icon-4 = 5;File
+ws-icon-5 = 6;Read
+ws-icon-6 = 7;Play
+ws-icon-7 = 8;Util
+
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 2
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Threshold temperature to display warning label
+; Default: 80
+warn-temperature = 70
+
+; Available tags:
+;   <label> (default)
+;   <ramp>
+format =  <label>
+format-foreground = #00C0FF
+
+; Available tags:
+;   <label-warn> (default)
+;   <ramp>
+format-warn =  <label-warn>
+format-warn-foreground = #FF0000
+
+; Available tokens:
+;   %temperature% (default)
+label = %temperature%
+
+; Available tokens:
+;   %temperature% (default)
+label-warn = %temperature%
+
+; Requires the <ramp> tag
+; The icon selection will range from 0 to `warn-temperature`
+; with the current temperature as index.
+ramp-0 = A
+ramp-1 = B
+ramp-2 = C
+ramp-foreground = #55
+
+
+[module/mybattery]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/scripts/battery
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = ACAD
+
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = (%H:%M)
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <ramp-capacity> <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+format-discharging = <ramp-capacity> <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = %percentage%%  %time%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = %percentage%%  %time%
+
+; Available tokens:
+;   %percentage% (default)
+label-full = %percentage%%     Full~ 
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%a"
+time = "%H:%M"
+
+format =  <label>
+format-foreground = ${colors.primary}
+label = %date%  %time%
+label-foreground = ${colors.primary}
+
+[module/powermenu]
+type = custom/menu
+
+; If true, <label-toggle> will be to the left of the menu items (default).
+; If false, it will be on the right of all the items.
+expand-right = true
+
+; "menu-LEVEL-N" has the same properties as "label-NAME" with
+; the additional "exec" property
+;
+; Available exec commands:
+;   menu-open-LEVEL
+;   menu-close
+; Other commands will be executed using "/usr/bin/env sh -c $COMMAND"
+
+menu-0-0 = Lock
+menu-0-0-exec = i3exit lock
+menu-0-0-foreground = #ffff00
+menu-0-1 = Logout
+menu-0-1-exec = i3exit logout
+menu-0-1-foreground = #00ff00
+menu-0-2 = Reboot
+menu-0-2-exec = i3exit reboot
+menu-0-2-foreground = #00ffff
+menu-0-3 = Off
+menu-0-3-exec = i3exit shutdown
+menu-0-3-foreground = #6809d5
+
+; Available tags:
+;   <label-toggle> (default) - gets replaced with <label-(open|close)>
+;   <menu> (default)
+format = <label-toggle> <menu>
+
+label-open = 
+label-open-foreground = #ff5555
+label-close = 
+label-close-foreground = #ff5555
+
+; Optional item separator
+; Default: none
+label-separator = |
+label-separator-foreground = #ff5555
+
+[module/wifi]
+type = internal/network
+interface = wlp8s0
+interval = 2
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = 
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+label-connected =  %essid%     %upspeed:9%     %downspeed:9% 
+;label-connected-foreground = #eefafafa
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected = not connected
+;label-disconnected-foreground = #66ffffff
+
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = ""
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+
+bar-volume-width = 10
+bar-volume-gradient = false
+bar-volume-indicator = │
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #ff
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format =    <ramp-coreload>
+;format-underline = #f90000
+label = %percentage%
+ramp-coreload-0 = %{F#5b}▁%{F-}
+ramp-coreload-1 = %{F#5b}▂%{F-}
+ramp-coreload-2 = %{F#5b}▃%{F-}
+ramp-coreload-3 = %{F#ff5555}▄%{F-}
+ramp-coreload-4 = %{F#ff5555}▅%{F-}
+ramp-coreload-5 = %{F#ff5555}▆%{F-}
+ramp-coreload-6 = %{F#ff5555}▇%{F-}
+ramp-coreload-7 = %{F#ff5555}█%{F-}
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+format =   <bar-used>
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #4bffdc
+label =
+bar-used-width = 26
+bar-used-foreground-0 = #5af78e
+bar-used-foreground-1 = #5af78e
+bar-used-foreground-2 = #f3f99d
+bar-used-foreground-3 = #ff5555
+;bar-used-fill = ▐
+bar-used-fill = 
+bar-used-empty = 
+bar-used-empty-foreground = #444444
+bar-used-indicator =

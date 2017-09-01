@@ -9,7 +9,7 @@ Writing my own i3 config is just like playing another Minecraft! (´・ω・`)
 ### -- core --
 * shell: bash with bash-completion
 * terminal: xfce4-terminal
-* bar: i3blocks (playctl, sysstat, ttf-font-awesome is needed)
+* bar: polybar
 * monitor: conky
 * transparent: compton
 * for-eye: redshift

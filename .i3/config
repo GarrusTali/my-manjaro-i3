@@ -31,7 +31,7 @@ floating_modifier $mod
 # focus_follows_mouse no
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 8
 gaps outer -4
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -156,50 +156,51 @@ client.background       $i3_background
 set $ws1 1:Term
 set $ws2 2:Edit
 set $ws3 3:Moon
-set $ws4 4:Ide
+set $ws4 4:Code
 set $ws5 5:File
 set $ws6 6:Read
-set $ws7 7:Media
-set $ws8 8:Chat
+set $ws7 7:Play
+set $ws8 8:Util
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth no
 
-# ~~~~~ bar ~~~~~
+# ~~~~~ bar ~~~~~ (ps: replaced with polybar)
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	#status_command i3status
-	status_command i3blocks -c ~/.config/i3blocks/config
-	position bottom
+# bar {
+# 	#status_command i3status
+# 	status_command i3blocks -c ~/.config/i3blocks/config
+# 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
 #	tray_output eDP1
 
-	bindsym button4 nop
-	bindsym button5 nop
-	font xft:Noto Sans 11.5
-	strip_workspace_numbers yes
+# 	bindsym button4 nop
+# 	bindsym button5 nop
+# 	font xft:Noto Sans 11.5
+# 	strip_workspace_numbers yes
 
-	colors {
-#       background $transparent
-        background $i3_background
-        statusline $i3_text
-        separator  $i3_separator
+# 	colors {
+##        background $transparent
+#         background $i3_background
+#         statusline $i3_text
+#         separator  $i3_separator
 
-#                           border      backgr.     text
-        focused_workspace   $i3_color1  #32CCAE     $i3_text
-        active_workspace    $i3_color2  $i3_color3  $i3_color5
-        inactive_workspace  $i3_color2  $i3_color3  $i3_color6
-        urgent_workspace    $i3_color4  $i3_color5  $i3_color7
-    }
-}
+##                            border      backgr.     text
+#         focused_workspace   $i3_color1  #32CCAE     $i3_text
+#         active_workspace    $i3_color2  $i3_color3  $i3_color5
+#         inactive_workspace  $i3_color2  $i3_color3  $i3_color6
+#         urgent_workspace    $i3_color4  $i3_color5  $i3_color7
+#     }
+# }
 
 
 # ~~~~~ startup application ~~~~~
 
 # sound
 exec --no-startup-id pulseaudio
+exec_always --no-startup-id pkill pulseaudio && pulseaudio
 exec --no-startup-id pa-applet
 
 # system
@@ -214,6 +215,7 @@ exec_always --no-startup-id fix_xcursor
 exec --no-startup-id feh --bg-scale ~/Pictures/beginning.png
 exec --no-startup-id conky -c ~/.config/conky/conky.conf
 exec --no-startup-id compton --config ~/.config/compton/config --xrender-sync --xrender-sync-fence -b
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # my
 exec --no-startup-id fcitx
@@ -397,7 +399,7 @@ mode "$mode_work" {
 
 # system-apps
 bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+backslash exec pamac-manager
+bindsym $mod+backslash exec --no-startup-id pamac-manager
 
 
 # ~~~~~ modes ~~~~~
@@ -461,6 +463,9 @@ bindsym $mod+Shift+a focus child
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
 
 # printscreen
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
