@@ -259,10 +259,10 @@ bindsym $mod+Shift+bracketright move container to workspace next; workspace next
 
 # ~~~~~ windows navigation ~~~~~
 # switch to window by direction
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -272,10 +272,10 @@ bindsym $mod+Right focus right
 
 ### Shift
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -370,7 +370,7 @@ bindsym $mod+Shift+space focus mode_toggle
 
 # ~~~~~ apps launcher ~~~~~
 # quick launcher of most frequently used ordinary things
-bindsym $mod+semicolon mode "$mode_nos"
+bindsym $mod+h mode "$mode_nos"
 set $mode_nos (j)ranger, (k)smplayer, (l)palemoon, (u)thunar
 mode "$mode_nos" {
 	bindsym j mode "default"; exec xfce4-terminal -e ranger
