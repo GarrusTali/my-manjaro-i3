@@ -294,7 +294,7 @@ bindsym $mod+n split v;exec notify-send 'tile vertically'
 bindsym $mod+b split toggle
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
+bindsym $mod+c floating toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -365,7 +365,7 @@ mode "$mode_gaps_outer" {
 bindsym $mod+Shift+slash --release exec --no-startup-id xkill
 
 # change focus between tiling / floating windows
-bindsym $mod+Shift+space focus mode_toggle
+# bindsym $mod+Shift+c focus mode_toggle
 
 
 # ~~~~~ apps launcher ~~~~~
@@ -435,9 +435,9 @@ mode "$mode_system" {
 
 
 # ~~~~~ music ~~~~~
-bindsym $mod+m exec playerctl play-pause
-bindsym $mod+comma exec playerctl previous
-bindsym $mod+period exec playerctl next
+bindsym $mod+m exec mpc toggle
+bindsym $mod+comma exec mpc prev
+bindsym $mod+period exec mpc next
 
 
 # ~~~~~ scratchpad ~~~~~
@@ -470,3 +470,13 @@ bindsym $mod+Shift+r restart
 # printscreen
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 
+# change volume or toggle mute
+# bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks 
+# bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+# bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1
+
+## single-hand mode
+bindsym $mod+Shift+s kill
+
+# rofi
+bindsym $mod+d exec rofi
