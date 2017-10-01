@@ -18,13 +18,14 @@ Writing my own i3 config is just like playing another Minecraft! (´・ω・`)
 * proxy: proxychains & shadowsocks
 
 others which manjaro-i3 included: 
-i3-scrot, lxappearance, xfce4-power-manager, pamac-tray, blurlock, pulseaudio&pavucontrol
+i3-scrot, lxappearance, xfce4-power-manager, blurlock, pulseaudio&pavucontrol
 for more, turn to startup application
 
 ### -- CLI apps --
 * file manager: ranger(w3m for preview image, atool for preview archives)
 * editor: neovim
 * media: ncmpcpp(mpc, mpd needed)
+* app-launcher: rofi
 * common: the_silver_searcher
 
 ### -- GUI apps --
