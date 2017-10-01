@@ -53,7 +53,7 @@ tray-position =
 tray-padding = 0
 
 modules-left = i3
-modules-center = 
+modules-center = mpd
 modules-right = temperature mybattery date powermenu
 
 [bar/bottom]
@@ -87,7 +87,7 @@ tray-padding = 2
 
 modules-left = wifi
 modules-center = 
-modules-right = volume cpu memory
+modules-right = cpu memory
 
 [module/i3]
 type = internal/i3
@@ -127,6 +127,37 @@ ws-icon-4 = 5;File
 ws-icon-5 = 6;Read
 ws-icon-6 = 7;Play
 ws-icon-7 = 8;Util
+
+
+[module/mpd]
+type = internal/mpd
+
+format-online = "<icon-prev>  <toggle>  <icon-next>  <icon-repeat>     <label-song>"
+
+label-song-foreground = #48E14E
+label-song-maxlen = 59
+label-song-ellipsis = true
+label-offline = offline
+
+icon-prev = 
+icon-seekb =
+icon-stop = 
+icon-play = 
+icon-pause =
+icon-next = 
+icon-seekf =
+
+icon-random = 
+icon-repeat = 
+
+; toggle-on-foreground = ${colors.primary}
+toggle-on-foreground = #fffff
+toggle-off-foreground = #66
+
+bar-progress-width = 10
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
 
 
 [module/temperature]
@@ -343,26 +374,35 @@ label-disconnected = not connected
 
 
 [module/volume]
-type = internal/volume
+type = custom/script
+interval = 2
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
 
-format-volume = <label-volume> <bar-volume>
-label-volume = ""
-label-volume-foreground = ${root.foreground}
+; type = internal/volume
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = muted
+; format-volume = <label-volume> <bar-volume>
+; label-volume = ""
+; label-volume-foreground = ${root.foreground}
 
-bar-volume-width = 10
-bar-volume-gradient = false
-bar-volume-indicator = │
-bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = #ff
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+; format-muted-prefix = " "
+; format-muted-foreground = ${colors.foreground-alt}
+; label-muted = muted
+
+; bar-volume-width = 10
+; bar-volume-gradient = false
+; bar-volume-indicator = │
+; bar-volume-indicator-font = 2
+; bar-volume-indicator-foreground = #ff
+; bar-volume-fill = ─
+; bar-volume-fill-font = 2
+; bar-volume-empty = ─
+; bar-volume-empty-font = 2
+; bar-volume-empty-foreground = ${colors.foreground-alt}
 
 
 [module/cpu]
