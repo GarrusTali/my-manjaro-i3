@@ -1,0 +1,50 @@
+search my
+open_with vim
+search .c
+shell ranger --copy-config=scope
+rename rc.conf.old
+rename commands_full.py.old
+rename rifle.conf.old
+rename commands.py.old
+rename scope.sh.old
+search Pic
+search .config
+search rang
+search 
+help
+nvim .inputrc
+shell nvim .inputrc
+shell ex i3blocks-contrib-master.zip
+shell unzip i3blocks-contrib-master.zip
+search prox
+open_with 
+search rust
+search r
+search gio
+search .cargo
+shell mkdir denite-me
+shell nvim README.md
+shell mkdir rplugin
+shell mkdir python3
+shell mkdir denite
+she
+shell mkdir source
+shell mkdir kind
+shell 
+search tmux
+mkdir projects
+open_with nvim
+mkdir ncmpcpp
+new config
+shell nvim config
+delete
+
+open_with e
+search re
+terminal
+search profile
+search bash
+search .profile
+mkdir rust_learn
+shell nvim prime_generator.rs
+search ranger
