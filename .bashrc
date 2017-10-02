@@ -40,3 +40,6 @@ colors() {
 export PATH="/home/garrustali/anaconda3/bin:$PATH"
 
 eval $(thefuck --alias)
+
+export EDITOR=neovim
+export TERMCMD=xfce4-terminal
