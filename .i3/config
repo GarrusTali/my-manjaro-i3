@@ -199,8 +199,7 @@ workspace_auto_back_and_forth no
 # ~~~~~ startup application ~~~~~
 
 # sound
-exec --no-startup-id pulseaudio
-exec_always --no-startup-id pkill pulseaudio && pulseaudio
+exec --no-startup-id pulseaudio --start
 exec --no-startup-id pa-applet
 
 # system
@@ -218,6 +217,7 @@ exec --no-startup-id compton --config ~/.config/compton/config --xrender-sync --
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # my
+exec --no-startup-id numlockx &
 exec --no-startup-id fcitx
 exec --no-startup-id sogou-qimpanel
 exec --no-startup-id sslocal -c ~/.config/shadowsocks/config.json
@@ -370,28 +370,27 @@ bindsym $mod+Shift+slash --release exec --no-startup-id xkill
 
 # ~~~~~ apps launcher ~~~~~
 # quick launcher of most frequently used ordinary things
-bindsym $mod+h mode "$mode_nos"
-set $mode_nos (j)ranger, (k)smplayer, (l)palemoon, (u)thunar
-mode "$mode_nos" {
+bindsym $mod+h mode "$mode_cli"
+set $mode_cli (j)ranger, (k)ncmpcpp, (l)zathura, (;)neovim
+mode "$mode_cli" {
 	bindsym j mode "default"; exec xfce4-terminal -e ranger
-	bindsym k workspace $ws7; mode "default"; exec --no-startup-id ~/.i3/script/oneonly smplayer
-	bindsym l workspace $ws3; mode "default"; exec --no-startup-id ~/.i3/script/oneonly palemoon
-	bindsym u mode "default"; exec thunar
+	bindsym k workspace $ws7; mode "default"; exec xfce4-terminal -e ncmpcpp
+	bindsym l workspace $ws6; mode "default"; exec xfce4-terminal -e zathura
+	bindsym semicolon workspace $ws2; mode "default"; exec xfce4-terminal -e nvim
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
 
 # quick launcher of most frequently used work-apps
-bindsym $mod+apostrophe mode "$mode_work"
-set $mode_work (j)nvim, (k)emacs, (l)leanote, (u)pycharm, (i)clion
-mode "$mode_work" {
-	bindsym j workspace $ws2; mode "default"; exec xfce4-terminal -e nvim
-	bindsym k workspace $ws2; mode "default"; exec --no-startup-id ~/.i3/script/oneonly emacs
+bindsym $mod+apostrophe mode "$mode_gui"
+set $mode_gui (j)thunar, (k)smplayer, (l)leanote, (;)palemoon, (u)pycharm
+mode "$mode_gui" {
+	bindsym j mode "default"; exec thunar
+	bindsym k workspace $ws7; mode "default"; exec --no-startup-id ~/.i3/script/oneonly smplayer
 	bindsym l workspace $ws6; mode "default"; exec --no-startup-id ~/.i3/script/oneonly ~/appsneak/leanote/Leanote
-	
+	bindsym semicolon workspace $ws3; mode "default"; exec --no-startup-id ~/.i3/script/oneonly palemoon
 	bindsym u workspace $ws4; mode "default"; exec --no-startup-id ~/.i3/script/oneonly charm
-	bindsym i workspace $ws4; mode "default"; exec --no-startup-id ~/.i3/script/oneonly clion
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -479,4 +478,4 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+s kill
 
 # rofi
-bindsym $mod+d exec rofi
+bindsym $mod+d exec --no-startup-id rofi -opacity 100 -show run
