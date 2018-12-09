@@ -36,8 +36,8 @@ colors() {
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
 
-# added by Anaconda3 4.4.0 installer
-export PATH="/home/garrustali/anaconda3/bin:$PATH"
+# added to find Anaconda3 5.3.1
+export PATH="$PATH:/home/blackray/anaconda3/bin"
 
 eval $(thefuck --alias)
 

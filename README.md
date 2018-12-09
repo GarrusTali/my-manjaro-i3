@@ -2,10 +2,6 @@
 # My-Manjaro-i3
 Writing my own i3 config is just like playing another Minecraft! (´・ω・`) 
 
-### screenshot
-
-![screenshot](https://github.com/GarrusTali/my-manjaro-i3/blob/master/screenshot.png)
-
 ### -- core --
 * shell: bash with bash-completion
 * terminal: xfce4-terminal
@@ -31,10 +27,11 @@ for more, turn to startup application
 
 ### -- GUI apps --
 * file manager: thunar
-* browser: palemoon
+* editor: vscode
+* browser: firefox
 * media: smplayer
 * pdfreader: zathura
-* ide: pycharm & clion
+* ide: pycharm
 * office: libreoffice
 * note: leanote
 
