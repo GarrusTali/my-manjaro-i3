@@ -217,7 +217,6 @@ exec --no-startup-id mpd
 exec --no-startup-id numlockx &
 exec --no-startup-id fcitx
 exec --no-startup-id sogou-qimpanel
-exec --no-startup-id sslocal -c ~/.config/shadowsocks/config.json
 exec --no-startup-id xfce4-terminal --title scratch
 
 
